@@ -90,6 +90,11 @@ namespace SingleResponsibilityPrinciple
 
         private void LogMessage(string msgType, string message, params object[] args)
         {
+            using (StreamWriter logger = File.AppendText("log.xml"))
+            {
+                logger.WriteLine("<log><type>" + msgType + "</type><message>" + message + "</message></log>");
+            }
+
             Console.WriteLine(msgType+ " :" +message, args);
         }
 
