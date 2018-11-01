@@ -67,6 +67,16 @@ namespace SingleResponsibilityPrinciple
                 LogMessage("WARN", " Trade amount on line {0} not a valid integer: '{1}'", currentLine, fields[1]);
                 return false;
             }
+            else if (tradeAmount > 100000)
+            {
+                LogMessage("WARN", " Trade amount on line {0} is greater than 10000: '{1}'", currentLine, fields[1]);
+                return false;
+            }
+            else if (tradeAmount < 1000)
+            {
+                LogMessage("WARN", " Trade amount on line {0} is less than 1000: '{1}'", currentLine, fields[1]);
+                return false;
+            }
 
             decimal tradePrice;
             if (!decimal.TryParse(fields[2], out tradePrice))
