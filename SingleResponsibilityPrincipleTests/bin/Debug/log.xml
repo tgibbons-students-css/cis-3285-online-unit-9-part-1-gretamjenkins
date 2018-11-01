@@ -71,3 +71,20 @@
 <log><type>WARN</type><message> Trade amount on line {0} is greater than 10000: '{1}'</message></log>
 <log><type>INFO</type><message>  Connecting to Database</message></log>
 <log><type>INFO</type><message>  {0} trades processed</message></log>
+<log><type>INFO</type><message>  Connecting to Database</message></log>
+<log><type>INFO</type><message>  {0} trades processed</message></log>
+<log><type>INFO</type><message>  Connecting to Database</message></log>
+<log><type>INFO</type><message>  {0} trades processed</message></log>
+<log><type>WARN</type><message> Line {0} malformed. Only {1} field(s) found.</message></log>
+<log><type>WARN</type><message> Line {0} malformed. Only {1} field(s) found.</message></log>
+<log><type>WARN</type><message> Trade amount on line {0} not a valid integer: '{1}'</message></log>
+<log><type>WARN</type><message> Trade price on line {0} not a valid decimal: '{1}'</message></log>
+<log><type>INFO</type><message>  Connecting to Database</message></log>
+<log><type>INFO</type><message>  {0} trades processed</message></log>
+<log><type>WARN</type><message> Trade amount on line {0} is less than 1000: '{1}'</message></log>
+<log><type>WARN</type><message> Trade amount on line {0} is less than 1000: '{1}'</message></log>
+<log><type>WARN</type><message> Trade amount on line {0} is greater than 10000: '{1}'</message></log>
+<log><type>INFO</type><message>  Connecting to Database</message></log>
+<log><type>INFO</type><message>  {0} trades processed</message></log>
+<log><type>INFO</type><message>  Connecting to Database</message></log>
+<log><type>INFO</type><message>  {0} trades processed</message></log>

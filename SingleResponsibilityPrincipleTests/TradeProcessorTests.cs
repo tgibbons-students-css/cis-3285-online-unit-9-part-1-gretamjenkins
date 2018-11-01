@@ -86,7 +86,6 @@ namespace SingleResponsibilityPrinciple.Tests
             Assert.AreEqual(endCount - startCount, 0);
         }
 
-
         [TestMethod]
         public void TestTradeAmountBoounds()
         {
@@ -99,6 +98,22 @@ namespace SingleResponsibilityPrinciple.Tests
             int endCount = CountDbRecords();
             // Assert
             Assert.AreEqual(endCount - startCount, 2);
+        }
+
+        [TestMethod]
+        public void TestURLTradeData()
+        {
+            // Arrange
+            string URL = "http://faculty.css.edu/tgibbons/trades4.txt";
+            var tradeProcessor = new TradeProcessor();
+            int startCount = CountDbRecords();
+
+            // Act
+            tradeProcessor.ProcessTradesFromWeb(URL);
+            int endCount = CountDbRecords();
+
+            // Assert
+            Assert.AreEqual(endCount - startCount, 4);
         }
 
     }
