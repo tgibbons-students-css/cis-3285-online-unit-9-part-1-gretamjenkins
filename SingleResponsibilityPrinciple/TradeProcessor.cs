@@ -10,6 +10,7 @@ namespace SingleResponsibilityPrinciple
 {
     public class TradeProcessor
     {
+        // Read trade data from a file stream
         private IEnumerable<string> ReadTradeData(Stream stream)
         {
             var tradeData = new List<string>();
@@ -21,6 +22,26 @@ namespace SingleResponsibilityPrinciple
                     tradeData.Add(line);
                 }
             }
+            return tradeData;
+        }
+
+        // Read trade data from a web client file
+        public IEnumerable<string> ReadURLTradeData(string URL)
+        {
+            var tradeData = new List<string>();
+            // create new web client and use it to read the file stored at the given URL
+            var client = new WebClient();
+
+            using (var stream = client.OpenRead(URL))
+            using (var reader = new StreamReader(stream))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    tradeData.Add(line);
+                }
+            }
+
             return tradeData;
         }
 
@@ -61,6 +82,7 @@ namespace SingleResponsibilityPrinciple
                 return false;
             }
 
+            // Returns false if the value is fields[1] is not an integer or the integer value is less than 1000 or greater than 100000
             int tradeAmount;
             if (!int.TryParse(fields[1], out tradeAmount))
             {
@@ -88,6 +110,7 @@ namespace SingleResponsibilityPrinciple
             return true;
         }
 
+        // Prints message to the console and logs it into the log.xml file in xml file format
         private void LogMessage(string msgType, string message, params object[] args)
         {
             using (StreamWriter logger = File.AppendText("log.xml"))
@@ -148,13 +171,21 @@ namespace SingleResponsibilityPrinciple
             LogMessage("INFO", "  {0} trades processed", trades.Count());
         }
 
-        public void ProcessTrades(Stream stream)
+        // Method process trades from a local file stream
+        public void ProcessTradesFromFile(Stream stream)
         {
             var lines = ReadTradeData(stream);
             var trades = ParseTrades(lines);
             StoreTrades(trades);
         }
 
+        // Processes trades from the web
+        public void ProcessTradesFromWeb(string URL)
+        {
+            var lines = ReadURLTradeData(URL);
+            var trades = ParseTrades(lines);
+            StoreTrades(trades);
+        }
 
     }
 }

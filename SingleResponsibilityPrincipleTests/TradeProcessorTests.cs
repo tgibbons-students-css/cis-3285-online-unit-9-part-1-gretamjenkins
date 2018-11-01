@@ -38,7 +38,7 @@ namespace SingleResponsibilityPrinciple.Tests
             var tradeProcessor = new TradeProcessor();
 
             //Act
-            tradeProcessor.ProcessTrades(tradeStream);
+            tradeProcessor.ProcessTradesFromFile(tradeStream);
 
             //Assert
 
@@ -53,7 +53,7 @@ namespace SingleResponsibilityPrinciple.Tests
             var tradeProcessor = new TradeProcessor();
 
             //Act
-            tradeProcessor.ProcessTrades(tradeStream);
+            tradeProcessor.ProcessTradesFromFile(tradeStream);
 
             //Assert
 
@@ -66,7 +66,7 @@ namespace SingleResponsibilityPrinciple.Tests
             var tradeProcessor = new TradeProcessor();
             int startCount = CountDbRecords();
             // Act
-            tradeProcessor.ProcessTrades(tradeStream);
+            tradeProcessor.ProcessTradesFromFile(tradeStream);
             int endCount = CountDbRecords();
             // Assert
             Assert.AreEqual(endCount - startCount, 4);
@@ -80,7 +80,7 @@ namespace SingleResponsibilityPrinciple.Tests
             var tradeProcessor = new TradeProcessor();
             int startCount = CountDbRecords();
             // Act
-            tradeProcessor.ProcessTrades(tradeStream);
+            tradeProcessor.ProcessTradesFromFile(tradeStream);
             int endCount = CountDbRecords();
             // Assert
             Assert.AreEqual(endCount - startCount, 0);
@@ -95,7 +95,7 @@ namespace SingleResponsibilityPrinciple.Tests
             var tradeProcessor = new TradeProcessor();
             int startCount = CountDbRecords();
             // Act
-            tradeProcessor.ProcessTrades(tradeStream);
+            tradeProcessor.ProcessTradesFromFile(tradeStream);
             int endCount = CountDbRecords();
             // Assert
             Assert.AreEqual(endCount - startCount, 2);
